@@ -14,6 +14,25 @@ catch(error){
 }
 }
 
+
+const getNotes = async (req,res)=>{
+
+    try{
+   const notes = await Note.find()
+   res.status(200).json(notes)
+
+    }
+    catch(error){
+        res.status(500).json({
+            message : "failed to fetch notes",
+            error : error.message
+        })
+    }
+
+}
+
+
 module.exports={
-    createNote
+    createNote,
+    getNotes
 }
