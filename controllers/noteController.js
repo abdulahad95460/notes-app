@@ -14,6 +14,6 @@ catch(error){
 }
 }
 
-module.exports({
+module.exports={
     createNote
-})
+}
