@@ -32,7 +32,27 @@ const getNotes = async (req,res)=>{
 }
 
 
+const updateNotes = async (req,res)=>{
+    try {
+        const id = req.params.id;
+        const update = await Note.findByIdAndUpdate(
+            id,
+            req.body,
+            {new : true}
+        )
+        res.status(200).json(update)
+        
+    } catch (error) {
+        res.status(500).json({
+            message : "failed to updateNotes",
+            error : error.message
+        })
+    }
+}
+
+
 module.exports={
     createNote,
-    getNotes
+    getNotes,
+    updateNotes
 }
